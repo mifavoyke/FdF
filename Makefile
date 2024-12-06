@@ -7,7 +7,13 @@ LIBMLX42 := $(DIR_MLX42)/libmlx42.a
 
 CC := gcc
 CFLAGS := -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
+
+UNAME := $(shell uname)
+ifeq ($(UNAME), Darwin)
+LIBS := $(LIBMLX42) -L/opt/homebrew/lib -lglfw -framework Cocoa -framework OpenGL -framework IOKit
+else
 LIBS := $(LIBMLX42) -ldl -lglfw -pthread -lm
+endif
 
 SRCS := $(DIR_SRCS)/draw.c \
 		$(DIR_SRCS)/bresenhams_line.c \
