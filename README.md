@@ -64,11 +64,16 @@ Ensure these dependencies are installed and properly configured.
 
 ## Screenshots/Demo
 
-It started out like this -> ![2](https://github.com/user-attachments/assets/ac55e6d8-1278-4407-9e79-eb159b505987) <img width="569" alt="4" src="https://github.com/user-attachments/assets/3e7d97ce-7095-4c7e-8c18-b10e7b0f185d">
+It started out like this ->
 
+![2](https://github.com/user-attachments/assets/72229fa8-f2cb-45a0-bed5-01b5cda08b34)
 
-So that it ended up like this -> <img width="1013" alt="5" src="https://github.com/user-attachments/assets/c950a58c-c2fd-4a9a-9def-af20ba8bec45">
+<img width="465" alt="4" src="https://github.com/user-attachments/assets/fb553dfb-3040-4590-8d8d-86e26158b538">
 
-<img width="974" alt="6" src="https://github.com/user-attachments/assets/069904ba-1510-4a0b-92d9-19d90f5ddb06">
+So that it ended up like this ->
 
-<img width="1032" alt="7" src="https://github.com/user-attachments/assets/70e32041-24e5-4e14-aa80-5a9d7584e730">
+<img width="772" alt="5" src="https://github.com/user-attachments/assets/0a5a5424-36e5-4b78-aeb8-3eaceffecfd3">
+
+<img width="683" alt="6" src="https://github.com/user-attachments/assets/cbc31b83-561d-49a0-903d-e2a531ffebaf">
+
+<img width="728" alt="7" src="https://github.com/user-attachments/assets/7b214a91-ff92-4ac8-a2e6-f184748454c3">
