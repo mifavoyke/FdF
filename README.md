@@ -66,9 +66,7 @@ Ensure these dependencies are installed and properly configured.
 
 It started out like this ->
 
-![2](https://github.com/user-attachments/assets/72229fa8-f2cb-45a0-bed5-01b5cda08b34)
-
-<img width="465" alt="4" src="https://github.com/user-attachments/assets/fb553dfb-3040-4590-8d8d-86e26158b538">
+![2](https://github.com/user-attachments/assets/72229fa8-f2cb-45a0-bed5-01b5cda08b34) <img width="465" alt="4" src="https://github.com/user-attachments/assets/fb553dfb-3040-4590-8d8d-86e26158b538">
 
 So that it ended up like this ->
 
