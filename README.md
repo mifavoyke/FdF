@@ -1,15 +1,21 @@
-# [PROJECT_NAME]
+# FDF
 
-[PROJECT_NAME] is a project developed as part of the 42 curriculum, focusing on [briefly describe the goal of the project, e.g., "rendering 2D/3D graphics" or "implementing a wireframe viewer"]. The project uses **MLX42**, a modern C graphics library built on top of GLFW, ensuring seamless and efficient rendering.
+FDF is a project developed as part of the 42 curriculum, focusing on implementing a wireframe model representation of a 3D landscape. The project uses **MLX42**, a modern C graphics library.
 
 ---
 
 ## Features
 
-- [List key features of your project, e.g., "2D wireframe rendering" or "real-time animations."]
-- Utilises **Bresenham's line-drawing algorithm** for optimised rendering.
-- Supports custom colour parsing in BGRA format.
-- [Add any other unique functionality your project provides.]
+- **Wireframe Landscape Rendering**: Visualises 3D landscapes as a wireframe model by linking (x, y, z) points with line segments (edges).  
+- **Isometric Projection**: Displays the model in an isometric view to provide a clear perspective of the 3D scene.  
+- **Efficient Rendering**: Implements **Bresenham's line-drawing algorithm** for precise and optimised line generation.  
+- **Dynamic Input Parsing**: Reads coordinates from `.fdf` files where the x-axis, y-axis, and altitude (z) values define the landscape.  
+- **Custom Colour Support**: Supports BGRA colour format for detailed visualisation.  
+- **Smooth Window Management**: Handles user interactions seamlessly:
+  - Pressing `ESC` or clicking the close button exits the program cleanly.  
+  - Responds smoothly to window minimisation or focus changes.  
+- **Keyboard and Mouse Events**: Built-in functionality to handle input for extended interactivity (future expansion).  
+- **Built with MLX42**: Uses MLX42 for creating windows, drawing images, and handling events.  
 
 ---
 
@@ -40,13 +46,12 @@ To run the project, ensure you have the following installed:
 
 3. Build the project:
    ```bash
-   cmake .
    make
    ```
 
 4. Run the program:
    ```bash
-   ./[PROJECT_BINARY_NAME]
+   ./fdf maps/[MAP OF YOUR CHOICE].fdf
    ```
 
 ---
@@ -59,16 +64,6 @@ This project relies on:
 - **GLFW**: A cross-platform library for OpenGL, OpenGL ES, and Vulkan development. [GLFW Website](https://www.glfw.org/)
 
 Ensure these dependencies are installed and properly configured.
-
----
-
-## Usage
-
-1. [Describe how to use the program, e.g., passing files as arguments or navigating the interface.]
-2. Example command:
-   ```bash
-   ./[PROJECT_BINARY_NAME] example_file.fdf
-   ```
 
 ---
 
