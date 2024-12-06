@@ -57,7 +57,6 @@ To run the project, ensure you have the following installed:
 This project relies on:
 
 - **MLX42**: A lightweight graphics library by Codam Coding College. [MLX42 GitHub Repository](https://github.com/codam-coding-college/MLX42)
-- **GLFW**: A cross-platform library for OpenGL, OpenGL ES, and Vulkan development. [GLFW Website](https://www.glfw.org/)
 
 Ensure these dependencies are installed and properly configured.
 
