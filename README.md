@@ -34,7 +34,8 @@ To run the project, ensure you have the following installed:
 
 2. Install dependencies (GLFW and MLX42):
    ```bash
-   brew install glfw             # On macOS with Homebrew
+   # On macOS with Homebrew
+   brew install glfw
    # Or refer to GLFW installation for Linux/Windows
    git submodule update --init --recursive
    ```
