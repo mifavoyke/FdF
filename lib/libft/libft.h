@@ -15,12 +15,14 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdarg.h>
+# include <limits.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10000000
+#  define BUFFER_SIZE 10000
 # endif
 
-//Part1
+// PART 1
 void	ft_bzero(void *s, size_t n);
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
@@ -47,7 +49,7 @@ size_t	ft_strlen(const char *str);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 
-//Part2
+// PART 2
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
@@ -60,7 +62,7 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
-//BONUS_lists
+// BONUS
 typedef struct s_list
 {
 	void			*content;
@@ -79,5 +81,17 @@ int		ft_lstsize(t_list *lst);
 
 // GET_NEXT_LINE
 char	*get_next_line(int fd);
+
+// FT_PRINTF
+int	ft_printf(const char *fmt, ...);
+int	ft_conversions(const char type, va_list arg);
+int	ft_char(int c);
+int	ft_string(char *s);
+int	ft_number(int n);
+int	ft_pointer(void *arr);
+int	ft_unsigned_dec(unsigned int num);
+int	ft_hexadecimal(unsigned int num, const char type, int count);
+int	ft_percent(void);
+int	ft_hex_base(int num);
 
 #endif

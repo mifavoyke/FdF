@@ -1,56 +1,70 @@
 NAME := fdf
-DIR_SRCS := ./source
-HEADERS := -I ./include -I ./lib/MLX42/include -I ./lib/libft
-LIBFT := ./lib/libft/libft.a
-DIR_MLX42 := ./lib/MLX42/build
-LIBMLX42 := $(DIR_MLX42)/libmlx42.a
-
-CC := gcc
 CFLAGS := -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
+CC := gcc
+RM := rm -rf
+HEADERS = -I ./include -I ./lib/MLX42/include -I ./lib/libft
 
-UNAME := $(shell uname)
-ifeq ($(UNAME), Darwin)
-LIBS := $(LIBMLX42) -L/opt/homebrew/lib -lglfw -framework Cocoa -framework OpenGL -framework IOKit
+SRC_DIR := ./source
+LIBFT_DIR := ./lib/libft
+MLX42_DIR = ./lib/MLX42
+MLX42_BUILD = ./lib/MLX42/build
+MLX42_REPO = https://github.com/codam-coding-college/MLX42.git
+
+ifeq ($(shell uname), Darwin)
+LIBS := $(MLX42_BUILD)/libmlx42.a -L/opt/homebrew/lib -lglfw -framework Cocoa -framework OpenGL -framework IOKit
 else
-LIBS := $(LIBMLX42) -ldl -lglfw -pthread -lm
+LIBS := $(MLX42_BUILD)/libmlx42.a -ldl -lglfw -pthread -lm
 endif
 
-SRCS := $(DIR_SRCS)/draw.c \
-		$(DIR_SRCS)/bresenhams_line.c \
-		$(DIR_SRCS)/draw_utils.c \
-		$(DIR_SRCS)/fdf.c \
-		$(DIR_SRCS)/fdf_utils.c \
-		$(DIR_SRCS)/gradient.c \
-		$(DIR_SRCS)/isometric.c \
-		$(DIR_SRCS)/parse_map.c \
-		$(DIR_SRCS)/parse_colours.c \
-		$(DIR_SRCS)/parse_utils.c
+SRCS := $(SRC_DIR)/draw.c \
+		$(SRC_DIR)/bresenhams_line.c \
+		$(SRC_DIR)/draw_utils.c \
+		$(SRC_DIR)/fdf.c \
+		$(SRC_DIR)/fdf_utils.c \
+		$(SRC_DIR)/gradient.c \
+		$(SRC_DIR)/isometric.c \
+		$(SRC_DIR)/parse_map.c \
+		$(SRC_DIR)/parse_colours.c \
+		$(SRC_DIR)/parse_utils.c
 
 OBJS := ${SRCS:.c=.o}
 
-all: libmlx $(LIBFT) $(NAME)
+all: libmlx libft $(NAME)
 
-$(LIBFT):
-	@make all -C ./lib/libft
+check_mlx:
+	@if [ ! -d "$(MLX42_DIR)" ]; then \
+		echo "MLX42 not found, cloning from GitHub..."; \
+		git clone $(MLX42_REPO) $(MLX42_DIR); \
+	elif [ -z "$(shell ls $(MLX42_DIR))" ]; then \
+		echo "MLX42 directory is empty, cloning from GitHub..."; \
+		rm -rf $(MLX42_DIR); \
+		git clone $(MLX42_REPO) $(MLX42_DIR); \
+	else \
+		echo "MLX42 exists, pulling latest updates..."; \
+		cd $(MLX42_DIR) && git pull; \
+	fi
 
-libmlx:
-	@cmake -DDEBUG=1 ./lib/MLX42 -B $(DIR_MLX42) && make -C $(DIR_MLX42) -j4
+libmlx: check_mlx
+	@cmake -DDEBUG=1 $(MLX42_DIR) -B $(MLX42_BUILD) && make -C $(MLX42_BUILD) -j4
+
+libft:
+	@echo "\033[0;35mCompiling...\033[0m"
+	@make all -C $(LIBFT_DIR)
 
 $(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LIBS) $(HEADERS) -o $(NAME)
-
-$(DIR_SRCS)/%.o: $(DIR_SRCS)/%.c
-	@$(CC) $(CFLAGS) -c $< -o $@ $(HEADERS)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_DIR)/libft.a $(LIBS) $(HEADERS) -o $(NAME)
 
 clean:
-	@rm -rf $(OBJS)
-	@make clean -C ./lib/libft
-	@rm -rf $(DIR_MLX42)
+	@$(RM) $(OBJS)
+	@make clean -C $(LIBFT_DIR)
+	@$(RM) $(MLX42_BUILD)
 
 fclean: clean
-	@rm -rf $(NAME)
-	@make fclean -C ./lib/libft
+	@$(RM) $(NAME)
+	@make fclean -C $(LIBFT_DIR)
 
 re: fclean all
 
 .PHONY: all clean fclean re libmlx
+
+.SILENT: $(OBJS)
