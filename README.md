@@ -6,7 +6,7 @@
 
 ### So that it ended up like this ->
 
-<img height="400" alt="5" src="https://github.com/user-attachments/assets/0a5a5424-36e5-4b78-aeb8-3eaceffecfd3">  <img height="400" alt="6" src="https://github.com/user-attachments/assets/cbc31b83-561d-49a0-903d-e2a531ffebaf">  <img height="500" alt="7" src="https://github.com/user-attachments/assets/7b214a91-ff92-4ac8-a2e6-f184748454c3">
+<img height="350" alt="5" src="https://github.com/user-attachments/assets/0a5a5424-36e5-4b78-aeb8-3eaceffecfd3">  <img height="350" alt="6" src="https://github.com/user-attachments/assets/cbc31b83-561d-49a0-903d-e2a531ffebaf">  <img height="600" alt="7" src="https://github.com/user-attachments/assets/7b214a91-ff92-4ac8-a2e6-f184748454c3">
 
 ---
 
