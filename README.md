@@ -33,7 +33,7 @@ FDF is a project developed as part of the 42 curriculum, focusing on implementin
     0 0 0 0 0 0 10 10 0 0 0 10 10 0 0 0 0 0 0
     0 0 0 0 0 0 10 10 0 0 0 10 10 10 10 10 10 0 0
     0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-
+   ```
   Here, we encounter the first "10" at the coordinate (3, 3, 10) where x - the third column; y - the third row; z - the number itself meaning altitude.
 
 - **Smooth Window Management**:
