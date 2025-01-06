@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yhusieva <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yhusieva <yhusieva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:17:07 by yhusieva          #+#    #+#             */
-/*   Updated: 2024/12/06 11:17:10 by yhusieva         ###   ########.fr       */
+/*   Updated: 2025/01/04 13:59:48 by yhusieva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,27 @@ typedef struct s_parameters
 	float	y0;
 }	t_parameters;
 
-typedef struct s_box
-{
-	size_t	width;
-	size_t	height;
-}	t_box;
-
 typedef struct s_offset
 {
 	int	start_x;
 	int	start_y;
 	int	interval;
 }	t_offset;
+
+typedef struct s_box
+{
+	size_t	width;
+	size_t	height;
+	t_offset offset;
+}	t_box;
+
+typedef struct s_fdf
+{
+	mlx_t		*mlx;
+	mlx_image_t	*img;
+	int32_t		image;
+	t_box		box;
+} t_fdf;
 
 typedef struct s_pos
 {
@@ -99,7 +108,7 @@ size_t	ft_count_height(char *arg);
 char	**ft_get_all(char *arg, size_t height);
 void	ft_hook(void *param);
 void	ft_define_parameters(t_parameters *params, t_coordinates *coord);
-void	ft_define_offset(t_offset *offset, t_box *box);
+void	ft_define_offset(t_box *box);
 size_t	ft_width(char **values);
 void	ft_error(void);
 void	ft_free(char **ptr, size_t size);

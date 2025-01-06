@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yhusieva <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yhusieva <yhusieva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:39:12 by yhusieva          #+#    #+#             */
-/*   Updated: 2024/12/05 13:39:13 by yhusieva         ###   ########.fr       */
+/*   Updated: 2025/01/04 13:05:00 by yhusieva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_define_parameters(t_parameters *params, t_coordinates *coord)
 	params->y0 = coord->y0;
 }
 
-void	ft_define_offset(t_offset *offset, t_box *box)
+void	ft_define_offset(t_box *box)
 {
 	int	max_width_interval;
 	int	max_height_interval;
@@ -50,9 +50,9 @@ void	ft_define_offset(t_offset *offset, t_box *box)
 	max_width_interval = WIDTH / box->width;
 	max_height_interval = HEIGHT / box->height;
 	if (max_width_interval < max_height_interval)
-		offset->interval = max_width_interval;
+		box->offset.interval = max_width_interval;
 	else
-		offset->interval = max_height_interval;
-	offset->start_x = (WIDTH - (box->width * offset->interval) / 2);
-	offset->start_y = (HEIGHT - (box->height * offset->interval));
+		box->offset.interval = max_height_interval;
+	box->offset.start_x = (WIDTH - (box->width * box->offset.interval) / 2);
+	box->offset.start_y = (HEIGHT - (box->height * box->offset.interval));
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yhusieva <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yhusieva <yhusieva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:39:21 by yhusieva          #+#    #+#             */
-/*   Updated: 2024/12/05 13:39:22 by yhusieva         ###   ########.fr       */
+/*   Updated: 2025/01/04 14:13:07 by yhusieva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,20 @@
 
 void	ft_hook(void *param)
 {
-	mlx_t	*mlx;
+	t_fdf *fdf;
 
-	mlx = param;
-	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(mlx);
+	fdf = (t_fdf *)param;
+    if ()
+        fdf->box.offset.start_y -= 50;
+    if ()
+        fdf->box.offset.start_y += 50;
+    if ()
+        fdf->box.offset.start_x += 50;
+    if ()
+        fdf->box.offset.start_x-= 50;
+	if (mlx_is_key_down(fdf->mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(fdf->mlx);
+	ft_draw(fdf->img, map, &fdf->box);
 }
 
 void	ft_error(void)
