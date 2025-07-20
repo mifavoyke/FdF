@@ -6,7 +6,7 @@
 /*   By: yhusieva <yhusieva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:17:07 by yhusieva          #+#    #+#             */
-/*   Updated: 2025/01/04 13:59:48 by yhusieva         ###   ########.fr       */
+/*   Updated: 2025/07/20 18:14:31 by yhusieva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct s_fdf
 	mlx_image_t	*img;
 	int32_t		image;
 	t_box		box;
+	t_map		**map;
 } t_fdf;
 
 typedef struct s_pos

@@ -6,7 +6,7 @@
 /*   By: yhusieva <yhusieva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:39:21 by yhusieva          #+#    #+#             */
-/*   Updated: 2025/01/04 14:13:07 by yhusieva         ###   ########.fr       */
+/*   Updated: 2025/07/20 18:19:24 by yhusieva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,22 @@
 
 void	ft_hook(void *param)
 {
-	t_fdf *fdf;
+	t_fdf *fdf = (t_fdf *)param;
 
-	fdf = (t_fdf *)param;
-    if ()
-        fdf->box.offset.start_y -= 50;
-    if ()
-        fdf->box.offset.start_y += 50;
-    if ()
-        fdf->box.offset.start_x += 50;
-    if ()
-        fdf->box.offset.start_x-= 50;
+	if (mlx_is_key_down(fdf->mlx, MLX_KEY_W))
+		fdf->box.offset.start_y -= 10;
+	if (mlx_is_key_down(fdf->mlx, MLX_KEY_S))
+		fdf->box.offset.start_y += 10;
+	if (mlx_is_key_down(fdf->mlx, MLX_KEY_D))
+		fdf->box.offset.start_x += 10;
+	if (mlx_is_key_down(fdf->mlx, MLX_KEY_A))
+		fdf->box.offset.start_x -= 10;
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(fdf->mlx);
-	ft_draw(fdf->img, map, &fdf->box);
+	mlx_delete_image(fdf->mlx, fdf->img);
+	fdf->img = mlx_new_image(fdf->mlx, WIDTH, HEIGHT);
+	fdf->image = mlx_image_to_window(fdf->mlx, fdf->img, 0, 0);
+	ft_draw(fdf->img, fdf->map, &fdf->box);
 }
 
 void	ft_error(void)
