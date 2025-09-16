@@ -1,5 +1,5 @@
 NAME := fdf
-CFLAGS := -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
+CFLAGS := -Wextra -Wall -Werror -Wunreachable-code -O3 -ffast-math -g
 CC := gcc
 RM := rm -rf
 HEADERS = -I ./include -I ./lib/MLX42/include -I ./lib/libft
@@ -62,6 +62,7 @@ clean:
 fclean: clean
 	@$(RM) $(NAME)
 	@make fclean -C $(LIBFT_DIR)
+	@$(RM) $(MLX42_DIR)
 
 re: fclean all
 
