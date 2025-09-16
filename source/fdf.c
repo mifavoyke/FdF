@@ -3,75 +3,71 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yhusieva <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yhusieva <yhusieva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:38:46 by yhusieva          #+#    #+#             */
-/*   Updated: 2024/12/05 13:38:48 by yhusieva         ###   ########.fr       */
+/*   Updated: 2025/07/20 18:21:30 by yhusieva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-static int	ft_map(mlx_image_t *img, char *arg)
+static int	ft_map(t_fdf *fdf, char *arg)
 {
-	t_box	box;
 	char	**map_lines;
-	t_map	**map;
 
-	box.height = ft_count_height(arg);
-	if (box.height == 0)
+	fdf->box.height = ft_count_height(arg);
+	if (fdf->box.height == 0)
 		return (1);
-	map_lines = ft_get_all(arg, box.height);
+	map_lines = ft_get_all(arg, fdf->box.height);
 	if (map_lines == NULL)
 		return (1);
-	map = ft_parse_map(map_lines, box.height, &box);
-	if (map == NULL)
+	fdf->map = ft_parse_map(map_lines, fdf->box.height, &fdf->box);
+	if (fdf->map == NULL)
 		return (1);
-	ft_rescale(map, &box);
-	ft_draw(img, map, &box);
-	ft_free(map_lines, box.height);
-	ft_free_map(map, box.height);
+	ft_rescale(fdf->map, &fdf->box);
+	ft_draw(fdf->img, fdf->map, &fdf->box);
+	// ft_free(map_lines, fdf->box.height);
+	// ft_free_map(fdf->map, fdf->box.height);
 	return (0);
 }
 
-static int32_t	ft_handle_map(mlx_t *mlx, mlx_image_t *img, char *arg)
+static int32_t	ft_handle_map(t_fdf *fdf, char *arg)
 {
 	int	issuccess;
 
-	issuccess = ft_map(img, arg);
+	issuccess = ft_map(fdf, arg);
 	if (issuccess == 1)
 	{
 		perror("Failed to open the file.");
-		mlx_delete_image(mlx, img);
-		mlx_terminate(mlx);
+		mlx_delete_image(fdf->mlx, fdf->img);
+		mlx_terminate(fdf->mlx);
 		return (EXIT_FAILURE);
 	}
-	return (EXIT_SUCCESS);
+	return (0);
 }
 
 int32_t	main(int argc, char *argv[])
 {
-	mlx_t		*mlx;
-	mlx_image_t	*img;
-	int32_t		image;
+	t_fdf fdf;
 
 	if (argc != 2)
 	{
 		perror("Wrong number of arguments.");
 		return (0);
 	}
-	mlx = mlx_init(WIDTH, HEIGHT, "FdF", true);
-	if (!mlx)
+	fdf.mlx = mlx_init(WIDTH, HEIGHT, "FdF", true);
+	if (!fdf.mlx)
 		ft_error();
-	img = mlx_new_image(mlx, 1920, 1080);
-	if (ft_handle_map(mlx, img, argv[1]) == EXIT_FAILURE)
+	fdf.img = mlx_new_image(fdf.mlx, 1920, 1080);
+	if (ft_handle_map(&fdf, argv[1]) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	image = mlx_image_to_window(mlx, img, 0, 0);
-	if (!img || image < 0)
+	fdf.image = mlx_image_to_window(fdf.mlx, fdf.img, 0, 0);
+	if (!fdf.img || fdf.image < 0)
 		ft_error();
-	mlx_loop_hook(mlx, ft_hook, mlx);
-	mlx_loop(mlx);
-	mlx_delete_image(mlx, img);
-	mlx_terminate(mlx);
-	return (EXIT_SUCCESS);
+	mlx_loop_hook(fdf.mlx, ft_hook, (void *)&fdf);
+	mlx_loop(fdf.mlx);
+	mlx_delete_image(fdf.mlx, fdf.img);
+	mlx_terminate(fdf.mlx);
+	return (0);
 }

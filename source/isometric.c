@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   isometric.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yhusieva <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yhusieva <yhusieva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:39:27 by yhusieva          #+#    #+#             */
-/*   Updated: 2024/12/05 13:39:28 by yhusieva         ###   ########.fr       */
+/*   Updated: 2025/01/04 13:05:26 by yhusieva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,15 @@ void	ft_rescale(t_map **map, t_box *box)
 {
 	unsigned int	x;
 	unsigned int	y;
-	t_offset		offset;
 
-	ft_define_offset(&offset, box);
+	ft_define_offset(box);
 	y = 0;
 	while (y < box->height)
 	{
 		x = 0;
 		while (x < box->width)
 		{
-			ft_zoom(map, &offset, x, y);
+			ft_zoom(map, &box->offset, x, y);
 			x++;
 		}
 		y++;
