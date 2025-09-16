@@ -52,7 +52,7 @@ void	ft_define_offset(t_box *box)
 	if (max_width_interval < max_height_interval)
 		box->offset.interval = max_width_interval;
 	else
-		offset->interval = max_height_interval;
-	offset->start_x = (WIDTH - (box->width * offset->interval) / 2);
-	offset->start_y = (HEIGHT - (box->height * offset->interval)) / 2;
+		box->offset.interval = max_height_interval;
+	box->offset.start_x = (WIDTH - (box->width * box->offset.interval) / 2);
+	box->offset.start_y = (HEIGHT - (box->height * box->offset.interval)) / 2;
 }
